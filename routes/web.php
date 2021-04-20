@@ -9,10 +9,13 @@ use App\Http\Livewire\Auth\Passwords\Reset;
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Verify;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Account\Edit;
+use App\Http\Livewire\Account\Show;
 
 Route::view('/', 'welcome')->name('home');
 
 Route::get('settings', Edit::class)->name('settings');
+Route::get('user/{identifier}', Show::class)->name('account.show');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)

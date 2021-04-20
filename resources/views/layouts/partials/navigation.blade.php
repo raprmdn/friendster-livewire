@@ -40,7 +40,7 @@
 
                         <div :class="{ 'md:hidden': !dropdownIsOpen  }" class="block md:absolute top-0 right-0 md:mr-4 mt-2 md:mt-14 md:bg-gray-700 md:w-56 md:rounded md:shadow md:py-2 leading-relaxed md:leading-loose">
                             <a href="{{ route('settings') }}" class="block text-gray-400 hover:text-white px-4">Settings</a>
-                            <a href="" class="block text-gray-400 hover:text-white px-4">Your Profile</a>
+                            <a href="{{ route('account.show', auth()->user()->usernameOrHash) }}" class="block text-gray-400 hover:text-white px-4">Your Profile</a>
                             <a href="" class="block text-gray-400 hover:text-white px-4">Your Friends</a>
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();"

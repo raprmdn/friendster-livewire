@@ -23,6 +23,7 @@ class User extends Authenticatable
         'hash',
         'username',
         'picture',
+        'description'
     ];
 
     /**
@@ -46,6 +47,11 @@ class User extends Authenticatable
 
     public function gravatar($size = 150) 
     {
-        return "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $this->email ) ) ) . "?&s=" . $size;
+        return $this->picture ? "/storage/{$this->picture}" : "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $this->email ) ) ) . "?&s=" . $size;
+    }
+
+    public function getUsernameOrHashAttribute() 
+    {
+        return $this->username ? $this->username : $this->hash;
     }
 }

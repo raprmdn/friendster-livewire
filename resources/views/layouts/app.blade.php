@@ -2,7 +2,9 @@
 
 @section('body')
     @include('layouts.partials.navigation')
-    @yield('content')
+    <div class="py-6">
+        @yield('content')
+    </div>
     
     @isset($slot)
         {{ $slot }}
