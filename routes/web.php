@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\TimelineController;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Passwords\Confirm;
 use App\Http\Livewire\Auth\Passwords\Email;
@@ -14,7 +15,8 @@ use App\Http\Livewire\Account\Show;
 
 Route::view('/', 'welcome')->name('home');
 
-Route::get('settings', Edit::class)->name('settings');
+Route::get('timeline', TimelineController::class);
+Route::get('settings', Edit::class)->name('settings')->middleware('auth');
 Route::get('user/{identifier}', Show::class)->name('account.show');
 
 Route::middleware('guest')->group(function () {
