@@ -12,12 +12,22 @@ use App\Http\Livewire\Auth\Verify;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Account\Edit;
 use App\Http\Livewire\Account\Show;
+use App\Http\Livewire\Status\Delete;
+use App\Http\Livewire\Status\Edit as StatusEdit;
+use App\Http\Livewire\Status\Show as StatusShow;
 
 Route::view('/', 'welcome')->name('home');
 
-Route::get('timeline', TimelineController::class);
+Route::middleware('auth')->group(function() {
+    Route::get('timeline', TimelineController::class)->name('timeline');
+    Route::get('status/{hash}/edit', StatusEdit::class)->name('status.edit');
+    Route::get('status/{hash}/delete', Delete::class)->name('status.delete');
+});
+
 Route::get('settings', Edit::class)->name('settings')->middleware('auth');
 Route::get('user/{identifier}', Show::class)->name('account.show');
+
+Route::get('status/{hash}', StatusShow::class)->name('status.show');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)

@@ -2,12 +2,23 @@
     {{-- Close your eyes. Count to one. That is how long forever feels. --}}
     <div class="flex">
         <div class="w-full md:w-1/2">
-            <div class="bg-white rounded border border-gray-200 p-5">
-                <h1 class="capitalize text-lg text-gray-700 mb-5">Update Your Profile</h1>
-                <form wire:submit.prevent="update">
+            <div class="bg-gray-50 rounded border border-gray-200">
+                <h1 class="capitalize text-lg text-gray-700 px-5 py-2 border-b border-gray-200 bg-gray-100 font-semibold">Update Your Profile</h1>
+
+                <form wire:submit.prevent="update" class="p-5">
                     <div class="mb-5">
-                        <label for="picture" class="block font-medium mb-1">Your profile picture</label>
-                        <input type="file" wire:model="picture" id="picture">
+                        <div class="flex items-center">
+                            @if($picture)
+                                <img src="{{ $picture->temporaryUrl() }}" class="w-16 h-16 rounded-full mr-3 object-cover object-center">
+                            @else
+                                <img src="{{ auth()->user()->gravatar() }}" class="w-16 h-16 rounded-full mr-3 object-cover object-center">
+                            @endif
+                            <label for="picture" class="bg-white border border-gray-200 px-4 py-2 rounded-lg">
+                                Upload Image
+                                <input type="file" wire:model="picture" id="picture" class="sr-only">
+                            </label>
+                        </div>
+                        
                         @error('picture')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
