@@ -1,6 +1,6 @@
 <div class="container">
     {{-- Care about people's approval and you will be their prisoner. --}}
-   <div class="bg-white p-5 rounded-lg border border-gray-200 w-full sm:w-1/2 sm:mx-auto text-center">
+   <div class="bg-white p-5 rounded-lg border border-gray-200 w-full lg:w-1/2 lg:mx-auto text-center">
         <div class="text-grey-700">
             <div class="text-xl font-bold mb-5">
                 Are u sure want delete this status?

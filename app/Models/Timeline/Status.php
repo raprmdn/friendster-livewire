@@ -11,6 +11,7 @@ class Status extends Model
     use HasFactory;
 
     protected $fillable = ['hash', 'body'];
+    protected $withCount = ['comments'];
 
     public function getPublishedAttribute() 
     {
@@ -20,5 +21,10 @@ class Status extends Model
     public function user() 
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function comments() 
+    {
+        return $this->hasMany(Comment::class);
     }
 }

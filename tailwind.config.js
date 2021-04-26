@@ -16,7 +16,10 @@ module.exports = {
     variants: {
         extend: {
             backgroundColor: ['active'],
-        }
+        },
+        
+        borderWidth: ['responsive', 'last'],
+        margin: ['responsive', 'last'],
     },
     purge: {
         content: [
