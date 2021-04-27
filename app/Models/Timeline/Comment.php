@@ -3,11 +3,13 @@
 namespace App\Models\Timeline;
 
 use App\Models\User;
+use App\Traits\Likeable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+    use Likeable;
     use HasFactory;
 
     protected $with = ['user'];

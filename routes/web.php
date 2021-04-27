@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\FollowingController;
 use App\Http\Controllers\TimelineController;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Passwords\Confirm;
@@ -26,6 +27,8 @@ Route::middleware('auth')->group(function() {
 
 Route::get('settings', Edit::class)->name('settings')->middleware('auth');
 Route::get('user/{identifier}', Show::class)->name('account.show');
+
+Route::get('user/{identifier}/{follow}', FollowingController::class)->name('account.following');
 
 Route::get('status/{hash}', StatusShow::class)->name('status.show');
 

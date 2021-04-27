@@ -18,6 +18,7 @@
                             <button onClick="window.location.href='#showReplyForm'" wire:click.prevent="showReplyForm({{ $comment->id }})" class="focus:outline-none">
                                 Add Reply
                             </button>
+                            <livewire:comment.like :comment="$comment" :key="$comment->id" />
                         </div>
                     </div>
                 </div>

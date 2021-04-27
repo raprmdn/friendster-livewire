@@ -1,6 +1,6 @@
-<div class="bg-white0 lg:h-screen w-full lg:w-1/5 lg:fixed lg:border-r border-gray-200">
+<div class="bg-white lg:h-screen w-full lg:w-1/5 lg:fixed lg:border-r border-gray-200">
     {{-- In work, do what you enjoy. --}}
-    <div class="py-2 leading-loose">
+    @auth
         <div class="bg-gray-50 border-b border-gray-200 px-6 py-5">
             <div class="flex">
                 <div class="flex-shrink-0 mr-3">
@@ -17,21 +17,29 @@
                 {{ auth()->user()->description }}
             </div>
         </div>
-        @auth
-            <a href="/timeline" class="block py-1 px-6 hover:bg-gray-100">Timeline</a>
-        @endauth
-        <a href="{{ route('settings') }}" class="block py-1 px-6 hover:bg-gray-100">Settings</a>
-        <a href="{{ route('account.show', auth()->user()->usernameOrHash) }}" class="block py-1 px-6 hover:bg-gray-100">Your Profile</a>
-        <a href="" class="block py-1 px-6 hover:bg-gray-100">Your Friends</a>
-        <a href="{{ route('logout') }}"
-            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-            class="block py-1 px-6 hover:bg-gray-100">
-            Log out
-        </a>
+        <div class="py-2 leading-loose">
+            @auth
+                <a href="/timeline" class="block py-1 px-6 hover:bg-gray-100">Timeline</a>
+            @endauth
+            <a href="{{ route('settings') }}" class="block py-1 px-6 hover:bg-gray-100">Settings</a>
+            <a href="{{ route('account.show', auth()->user()->usernameOrHash) }}" class="block py-1 px-6 hover:bg-gray-100">Your Profile</a>
+            <a href="" class="block py-1 px-6 hover:bg-gray-100">Your Friends</a>
+            <a href="{{ route('logout') }}"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                class="block py-1 px-6 hover:bg-gray-100">
+                Log out
+            </a>
 
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-        </form>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
 
-    </div>
+        </div>
+    @else
+        <div class="py-2 leading-loose">
+            <div class="px-6 py-1 font-semibold text-lg">{{ config('app.name') }}</div>
+            <a href="{{ route('login') }}" class="block py-1 px-6 hover:bg-gray-100">Login</a>
+            <a href="{{ route('register') }}" class="block py-1 px-6 hover:bg-gray-100">Register</a>
+        </div>
+    @endauth
 </div>

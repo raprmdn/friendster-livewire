@@ -3,11 +3,13 @@
 namespace App\Models\Timeline;
 
 use App\Models\User;
+use App\Traits\Likeable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Status extends Model
 {
+    use Likeable;
     use HasFactory;
 
     protected $fillable = ['hash', 'body'];
@@ -27,4 +29,5 @@ class Status extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
 }
